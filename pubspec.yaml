@@ -30,11 +30,14 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.4.1
+  firebase_auth: ^4.17.8
+  firebase_core: ^2.27.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
   flutter_gen_runner: ^5.4.0
   geolocator: ^11.0.0
+  google_sign_in: ^6.2.1
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
 
