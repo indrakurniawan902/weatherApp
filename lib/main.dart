@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/presentation/authentication/cubit/authentication_cubit.dart';
+import 'package:weather/presentation/authentication/login_page.dart';
 import 'package:weather/common/injection.dart';
-import 'package:weather/presentation/home/cubit/home_cubit.dart';
-import '../presentation/home/home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   configureInjection();
   runApp(const MyApp());
 }
@@ -16,7 +22,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+
         BlocProvider(create: (context) => getIt<HomeCubit>()),
+        BlocProvider(
+          create: (context) => AuthenticationCubit(),
+        )
       ],
       child: MaterialApp(
         title: 'Weather App',
@@ -25,7 +35,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HomePage(),
+        home: const LoginPage(),
       ),
     );
   }
