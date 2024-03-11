@@ -10,11 +10,11 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeSuccess extends HomeState {
-  final WeatherModel weather;
+  final WeatherEntity weather;
   HomeSuccess(this.weather);
 
   @override
-  List<Object> get props => [weather];
+  List<Object> get props => [];
 }
 
 class HomeError extends HomeState {
