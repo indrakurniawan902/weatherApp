@@ -1,36 +1,35 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class WeatherEntity extends Equatable {
-  final Coord coord;
-  final List<WeatherElement> weather;
-  final String base;
-  final Main main;
-  final int visibility;
-  final Wind wind;
-  final Rain rain;
-  final Clouds clouds;
-  final int dt;
-  final Sys sys;
-  final int timezone;
-  final int id;
-  final String name;
-  final int cod;
+  Coord? coord;
+  List<WeatherElement>? weather;
+  String? base;
+  Main? main;
+  int? visibility;
+  Wind? wind;
+  Clouds? clouds;
+  int? dt;
+  Sys? sys;
+  int? timezone;
+  int? id;
+  String? name;
+  int? cod;
 
-  const WeatherEntity({
-    required this.coord,
-    required this.weather,
-    required this.base,
-    required this.main,
-    required this.visibility,
-    required this.wind,
-    required this.rain,
-    required this.clouds,
-    required this.dt,
-    required this.sys,
-    required this.timezone,
-    required this.id,
-    required this.name,
-    required this.cod,
+  WeatherEntity({
+    this.coord,
+    this.weather,
+    this.base,
+    this.main,
+    this.visibility,
+    this.wind,
+    this.clouds,
+    this.dt,
+    this.sys,
+    this.timezone,
+    this.id,
+    this.name,
+    this.cod,
   });
 
   @override
@@ -41,7 +40,6 @@ class WeatherEntity extends Equatable {
         main,
         visibility,
         wind,
-        rain,
         clouds,
         dt,
         sys,
@@ -53,10 +51,10 @@ class WeatherEntity extends Equatable {
 }
 
 class Clouds extends Equatable {
-  final int all;
+  int? all;
 
-  const Clouds({
-    required this.all,
+  Clouds({
+    this.all,
   });
 
   @override
@@ -64,12 +62,12 @@ class Clouds extends Equatable {
 }
 
 class Coord extends Equatable {
-  final double lon;
-  final double lat;
+  double? lon;
+  double? lat;
 
-  const Coord({
-    required this.lon,
-    required this.lat,
+  Coord({
+    this.lon,
+    this.lat,
   });
 
   @override
@@ -77,20 +75,20 @@ class Coord extends Equatable {
 }
 
 class Main extends Equatable {
-  final double temp;
-  final double feelsLike;
-  final double tempMin;
-  final double tempMax;
-  final int pressure;
-  final int humidity;
+  double? temp;
+  double? feelsLike;
+  double? tempMin;
+  double? tempMax;
+  int? pressure;
+  int? humidity;
 
-  const Main({
-    required this.temp,
-    required this.feelsLike,
-    required this.tempMin,
-    required this.tempMax,
-    required this.pressure,
-    required this.humidity,
+  Main({
+    this.temp,
+    this.feelsLike,
+    this.tempMin,
+    this.tempMax,
+    this.pressure,
+    this.humidity,
   });
 
   @override
@@ -105,10 +103,10 @@ class Main extends Equatable {
 }
 
 class Rain extends Equatable {
-  final double the1H;
+  double? the1H;
 
-  const Rain({
-    required this.the1H,
+  Rain({
+    this.the1H,
   });
 
   @override
@@ -116,18 +114,18 @@ class Rain extends Equatable {
 }
 
 class Sys extends Equatable {
-  final int type;
-  final int id;
-  final String country;
-  final int sunrise;
-  final int sunset;
+  int? type;
+  int? id;
+  String? country;
+  int? sunrise;
+  int? sunset;
 
-  const Sys({
-    required this.type,
-    required this.id,
-    required this.country,
-    required this.sunrise,
-    required this.sunset,
+  Sys({
+    this.type,
+    this.id,
+    this.country,
+    this.sunrise,
+    this.sunset,
   });
 
   @override
@@ -135,16 +133,16 @@ class Sys extends Equatable {
 }
 
 class WeatherElement extends Equatable {
-  final int id;
-  final String main;
-  final String description;
-  final String icon;
+  int? id;
+  String? main;
+  String? description;
+  String? icon;
 
-  const WeatherElement({
-    required this.id,
-    required this.main,
-    required this.description,
-    required this.icon,
+  WeatherElement({
+    this.id,
+    this.main,
+    this.description,
+    this.icon,
   });
 
   @override
@@ -152,14 +150,14 @@ class WeatherElement extends Equatable {
 }
 
 class Wind extends Equatable {
-  final double speed;
-  final int deg;
-  final double gust;
+  double? speed;
+  int? deg;
+  double? gust;
 
-  const Wind({
-    required this.speed,
-    required this.deg,
-    required this.gust,
+  Wind({
+    this.speed,
+    this.deg,
+    this.gust,
   });
 
   @override
