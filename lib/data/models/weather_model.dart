@@ -6,56 +6,53 @@ part 'weather_model.g.dart';
 
 @JsonSerializable()
 class WeatherModel implements ResponseMapper<WeatherEntity> {
-  final CoordModel coord;
-  final List<WeatherElementModel> weather;
-  final String base;
-  final MainModel main;
-  final int visibility;
-  final WindModel wind;
-  final RainModel rain;
-  final CloudsModel clouds;
-  final int dt;
-  final SysModel sys;
-  final int timezone;
-  final int id;
-  final String name;
-  final int cod;
+  CoordModel? coord;
+  List<WeatherElementModel>? weather;
+  String? base;
+  MainModel? main;
+  int? visibility;
+  WindModel? wind;
+  CloudsModel? clouds;
+  int? dt;
+  SysModel? sys;
+  int? timezone;
+  int? id;
+  String? name;
+  int? cod;
 
   WeatherModel({
-    required this.coord,
-    required this.weather,
-    required this.base,
-    required this.main,
-    required this.visibility,
-    required this.wind,
-    required this.rain,
-    required this.clouds,
-    required this.dt,
-    required this.sys,
-    required this.timezone,
-    required this.id,
-    required this.name,
-    required this.cod,
+    this.coord,
+    this.weather,
+    this.base,
+    this.main,
+    this.visibility,
+    this.wind,
+    this.clouds,
+    this.dt,
+    this.sys,
+    this.timezone,
+    this.id,
+    this.name,
+    this.cod,
   });
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) =>
       _$WeatherModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
+  Map<String?, dynamic> toJson() => _$WeatherModelToJson(this);
 
   @override
   WeatherEntity toDomain() {
     return WeatherEntity(
-        coord: coord.toDomain(),
-        weather: weather.map((e) => e.toDomain()).toList(),
+        coord: coord?.toDomain(),
+        weather: weather?.map((e) => e.toDomain()).toList(),
         base: base,
-        main: main.toDomain(),
+        main: main?.toDomain(),
         visibility: visibility,
-        wind: wind.toDomain(),
-        rain: rain.toDomain(),
-        clouds: clouds.toDomain(),
+        wind: wind?.toDomain(),
+        clouds: clouds?.toDomain(),
         dt: dt,
-        sys: sys.toDomain(),
+        sys: sys?.toDomain(),
         timezone: timezone,
         id: id,
         name: name,
@@ -65,17 +62,17 @@ class WeatherModel implements ResponseMapper<WeatherEntity> {
 
 @JsonSerializable()
 class CoordModel implements ResponseMapper<Coord> {
-  final double lon;
-  final double lat;
+  double? lon;
+  double? lat;
 
-  const CoordModel({
-    required this.lon,
-    required this.lat,
+  CoordModel({
+    this.lon,
+    this.lat,
   });
 
   factory CoordModel.fromJson(Map<String, dynamic> json) =>
       _$CoordModelFromJson(json);
-  Map<String, dynamic> toJson() => _$CoordModelToJson(this);
+  Map<String?, dynamic> toJson() => _$CoordModelToJson(this);
 
   @override
   Coord toDomain() {
@@ -85,21 +82,21 @@ class CoordModel implements ResponseMapper<Coord> {
 
 @JsonSerializable()
 class WeatherElementModel implements ResponseMapper<WeatherElement> {
-  final int id;
-  final String main;
-  final String description;
-  final String icon;
+  int? id;
+  String? main;
+  String? description;
+  String? icon;
 
-  const WeatherElementModel({
-    required this.id,
-    required this.main,
-    required this.description,
-    required this.icon,
+  WeatherElementModel({
+    this.id,
+    this.main,
+    this.description,
+    this.icon,
   });
 
   factory WeatherElementModel.fromJson(Map<String, dynamic> json) =>
       _$WeatherElementModelFromJson(json);
-  Map<String, dynamic> toJson() => _$WeatherElementModelToJson(this);
+  Map<String?, dynamic> toJson() => _$WeatherElementModelToJson(this);
 
   @override
   WeatherElement toDomain() {
@@ -110,28 +107,28 @@ class WeatherElementModel implements ResponseMapper<WeatherElement> {
 
 @JsonSerializable()
 class MainModel implements ResponseMapper<Main> {
-  final double temp;
+  double? temp;
   @JsonKey(name: 'feels_like')
-  final double feelsLike;
+  double? feelsLike;
   @JsonKey(name: 'temp_min')
-  final double tempMin;
+  double? tempMin;
   @JsonKey(name: 'temp_max')
-  final double tempMax;
-  final int pressure;
-  final int humidity;
+  double? tempMax;
+  int? pressure;
+  int? humidity;
 
   MainModel({
-    required this.temp,
-    required this.feelsLike,
-    required this.tempMin,
-    required this.tempMax,
-    required this.pressure,
-    required this.humidity,
+    this.temp,
+    this.feelsLike,
+    this.tempMin,
+    this.tempMax,
+    this.pressure,
+    this.humidity,
   });
 
   factory MainModel.fromJson(Map<String, dynamic> json) =>
       _$MainModelFromJson(json);
-  Map<String, dynamic> toJson() => _$MainModelToJson(this);
+  Map<String?, dynamic> toJson() => _$MainModelToJson(this);
 
   @override
   Main toDomain() {
@@ -148,19 +145,19 @@ class MainModel implements ResponseMapper<Main> {
 
 @JsonSerializable()
 class WindModel implements ResponseMapper<Wind> {
-  final double speed;
-  final int deg;
-  final double gust;
+  double? speed;
+  int? deg;
+  double? gust;
 
-  const WindModel({
-    required this.speed,
-    required this.deg,
-    required this.gust,
+  WindModel({
+    this.speed,
+    this.deg,
+    this.gust,
   });
 
   factory WindModel.fromJson(Map<String, dynamic> json) =>
       _$WindModelFromJson(json);
-  Map<String, dynamic> toJson() => _$WindModelToJson(this);
+  Map<String?, dynamic> toJson() => _$WindModelToJson(this);
 
   @override
   Wind toDomain() {
@@ -169,35 +166,16 @@ class WindModel implements ResponseMapper<Wind> {
 }
 
 @JsonSerializable()
-class RainModel implements ResponseMapper<Rain> {
-  @JsonKey(name: '1h')
-  final double the1H;
-
-  const RainModel({
-    required this.the1H,
-  });
-
-  factory RainModel.fromJson(Map<String, dynamic> json) =>
-      _$RainModelFromJson(json);
-  Map<String, dynamic> toJson() => _$RainModelToJson(this);
-
-  @override
-  Rain toDomain() {
-    return Rain(the1H: the1H);
-  }
-}
-
-@JsonSerializable()
 class CloudsModel implements ResponseMapper<Clouds> {
-  final int all;
+  int? all;
 
-  const CloudsModel({
-    required this.all,
+  CloudsModel({
+    this.all,
   });
 
   factory CloudsModel.fromJson(Map<String, dynamic> json) =>
       _$CloudsModelFromJson(json);
-  Map<String, dynamic> toJson() => _$CloudsModelToJson(this);
+  Map<String?, dynamic> toJson() => _$CloudsModelToJson(this);
 
   @override
   Clouds toDomain() {
@@ -207,23 +185,23 @@ class CloudsModel implements ResponseMapper<Clouds> {
 
 @JsonSerializable()
 class SysModel implements ResponseMapper<Sys> {
-  final int type;
-  final int id;
-  final String country;
-  final int sunrise;
-  final int sunset;
+  int? type;
+  int? id;
+  String? country;
+  int? sunrise;
+  int? sunset;
 
-  const SysModel({
-    required this.type,
-    required this.id,
-    required this.country,
-    required this.sunrise,
-    required this.sunset,
+  SysModel({
+    this.type,
+    this.id,
+    this.country,
+    this.sunrise,
+    this.sunset,
   });
 
   factory SysModel.fromJson(Map<String, dynamic> json) =>
       _$SysModelFromJson(json);
-  Map<String, dynamic> toJson() => _$SysModelToJson(this);
+  Map<String?, dynamic> toJson() => _$SysModelToJson(this);
 
   @override
   Sys toDomain() {
