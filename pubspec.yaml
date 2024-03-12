@@ -31,12 +31,16 @@ dependencies:
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.4.1
+
+  firebase_auth: ^4.17.8
+  firebase_core: ^2.27.0
   equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
   flutter_gen_runner: ^5.4.0
   geolocator: ^11.0.0
+  google_sign_in: ^6.2.1
   get_it: ^7.6.7
   injectable: ^2.3.2
   json_annotation: ^4.8.1
